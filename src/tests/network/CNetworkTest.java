@@ -93,4 +93,24 @@ public class CNetworkTest {
 		verify(outputLayer).response();
 	}
 
+	@Test
+	public void run(){
+		CLayer inputLayer = Mockito.mock(CLayer.class);
+		CLayer hiddenLayer = Mockito.mock(CLayer.class);
+		CLayer outputLayer = Mockito.mock(CLayer.class);
+
+		network.addLayer(inputLayer);
+		network.addLayer(hiddenLayer);
+		network.addLayer(outputLayer);
+		
+		network.run(1);
+		
+		verify(inputLayer).request();
+		verify(hiddenLayer).request();
+		verify(outputLayer).request();
+		
+		verify(inputLayer).response();
+		verify(hiddenLayer).response();
+		verify(outputLayer).response();
+	}
 }

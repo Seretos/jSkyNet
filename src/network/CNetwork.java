@@ -41,4 +41,10 @@ public class CNetwork {
 			layer.response();
 		}
 	}
+	
+	public void run(int steps){
+		for(int i=0;i<steps;i++){
+			execute();
+		}
+	}
 }
