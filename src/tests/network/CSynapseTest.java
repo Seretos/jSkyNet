@@ -19,24 +19,23 @@ public class CSynapseTest {
 	public void setUp() throws Exception {
 		input = Mockito.mock(INeuron.class);
 		output = Mockito.mock(INeuron.class);
-		synapse = new CSynapse(input,output,0.4);
+		synapse = new CSynapse(input,output,0.4f);
 	}
 
 	@Test
 	public void initialize() {
 		assertSame(input,synapse.getSourceNeuron());
 		assertSame(output,synapse.getTargetNeuron());
-		assertEquals(0,synapse.getWeight().compareTo(0.4));
-		assertEquals(0,synapse.getInput().compareTo(0.0));
+		assertTrue(0.4f == synapse.getWeight());
+		assertTrue(0.0f == synapse.getInput());
 
-		synapse.setWeight(0.6);
-		assertEquals(0,synapse.getWeight().compareTo(0.6));
+		synapse.setWeight(0.6f);
+		assertTrue(0.6f == synapse.getWeight());
 		
-		synapse.setInput(0.5);
-		assertEquals(0,synapse.getInput().compareTo(0.5));
+		synapse.setInput(0.5f);
+		assertTrue(0.5f == synapse.getInput());
 		
-		Double result = synapse.calculate();
-		assertEquals(0,result.compareTo(0.3));
+		assertTrue(0.3f == synapse.calculate());
 	}
 
 }

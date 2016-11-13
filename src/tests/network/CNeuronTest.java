@@ -27,16 +27,16 @@ public class CNeuronTest {
 		CSynapse outSyn1 = Mockito.mock(CSynapse.class);
 		CSynapse outSyn2 = Mockito.mock(CSynapse.class);
 		
-		assertEquals(0,neuron.getThreshold().compareTo(0.0));
-		assertEquals(0,neuron.getValue().compareTo(0.0));
+		assertTrue(0.0f == neuron.getThreshold());
+		assertTrue(0 == neuron.getValue());
 		assertEquals(0,neuron.getInputSynapses().size());
 		assertEquals(0,neuron.getOutputSynapses().size());
 		
-		neuron.setThreshold(0.4);
-		assertEquals(0,neuron.getThreshold().compareTo(0.4));
+		neuron.setThreshold(0.4f);
+		assertTrue(0.4f == neuron.getThreshold());
 		
-		neuron.setValue(0.6);
-		assertEquals(0,neuron.getValue().compareTo(0.6));
+		neuron.setValue(0.6f);
+		assertTrue(0.6f == neuron.getValue());
 		
 		neuron.addInputSynapse(inSyn1);
 		neuron.addInputSynapse(inSyn2);
@@ -54,12 +54,12 @@ public class CNeuronTest {
 		neuron.addOutputSynapse(outSyn1);
 		neuron.addOutputSynapse(outSyn2);
 		
-		neuron.setValue(0.6);
+		neuron.setValue(0.6f);
 		neuron.request();
 		
-		verify(outSyn1).setInput(Matchers.eq(0.6));
-		verify(outSyn2).setInput(Matchers.eq(0.6));
-		assertEquals(0,neuron.getValue().compareTo(0.0));
+		verify(outSyn1).setInput(Matchers.eq(0.6f));
+		verify(outSyn2).setInput(Matchers.eq(0.6f));
+		assertTrue(0 == neuron.getValue());
 	}
 	
 	@Test
@@ -70,16 +70,17 @@ public class CNeuronTest {
 		neuron.addInputSynapse(inSyn1);
 		neuron.addInputSynapse(inSyn2);
 		
-		when(inSyn1.calculate()).thenReturn(0.4);
-		when(inSyn2.calculate()).thenReturn(0.5);
+		when(inSyn1.calculate()).thenReturn(0.4f,0.0f);
+		when(inSyn2.calculate()).thenReturn(0.5f,0.0f);
 		
 		neuron.response();
 		neuron.clear();
 		
-		verify(inSyn1).setInput(Matchers.eq(0.0));
-		verify(inSyn2).setInput(Matchers.eq(0.0));
+		verify(inSyn1).setInput(Matchers.eq(0.0f));
+		verify(inSyn2).setInput(Matchers.eq(0.0f));
 		
-		assertEquals(0,neuron.getValue().compareTo(0.9));
+		neuron.response();
+		assertTrue(0.0f==neuron.getValue());
 	}
 	
 	@Test
@@ -90,30 +91,26 @@ public class CNeuronTest {
 		neuron.addInputSynapse(inSyn1);
 		neuron.addInputSynapse(inSyn2);
 		
-		neuron.setThreshold(0.95);
+		neuron.setThreshold(0.95f);
 		
-		when(inSyn1.calculate()).thenReturn(0.4);
-		when(inSyn2.calculate()).thenReturn(0.5);
+		when(inSyn1.calculate()).thenReturn(0.4f);
+		when(inSyn2.calculate()).thenReturn(0.5f);
 		
 		neuron.response();
 		neuron.clear();
 				
-		verify(inSyn1).setInput(Matchers.eq(0.0));
-		verify(inSyn2).setInput(Matchers.eq(0.0));
+		verify(inSyn1).setInput(Matchers.eq(0.0f));
+		verify(inSyn2).setInput(Matchers.eq(0.0f));
 		
-		assertEquals(0,neuron.getValue().compareTo(0.0));
+		assertTrue(0.0f==neuron.getValue());
 	}
 
 	@Test
 	public void calculate(){
-		neuron.calculate(0.1);
-		assertEquals(0,neuron.getValue().compareTo(0.1));
+		neuron.calculate(0.1f);
+		assertTrue(0.1f == neuron.getValue());
 
-		neuron.calculate(0.3);
-		assertEquals(0,neuron.getValue().compareTo(0.3));
-		
-		neuron.setThreshold(0.4);
-		neuron.calculate(0.3);
-		assertEquals(0,neuron.getValue().compareTo(0.3));
+		neuron.calculate(0.3f);
+		assertTrue(0.3f == neuron.getValue());
 	}
 }

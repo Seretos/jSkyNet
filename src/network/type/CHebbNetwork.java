@@ -6,9 +6,9 @@ import network.CSynapse;
 import network.INeuron;
 
 public class CHebbNetwork extends CNetwork{
-	private Double learn;
+	private float learn;
 	
-	public CHebbNetwork(Double l){
+	public CHebbNetwork(float l){
 		learn = l;
 	}
 	

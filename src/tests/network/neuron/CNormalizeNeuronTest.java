@@ -16,26 +16,26 @@ public class CNormalizeNeuronTest {
 
 	@Test
 	public void calculate() {
-		neuron.calculate(-2.0);
-		assertEquals(0,neuron.getValue().compareTo(0.05399096651318806));
+		neuron.calculate(-2.0f);
+		assertTrue(0.053990968f == neuron.getValue());
 		
-		neuron.calculate(-0.2);
-		assertEquals(0,neuron.getValue().compareTo(0.3910426939754559));
+		neuron.calculate(-0.2f);
+		assertTrue(0.3910427f == neuron.getValue());
 		
-		neuron.calculate(0.0);
-		assertEquals(0,neuron.getValue().compareTo(0.3989422804014327));
+		neuron.calculate(0.0f);
+		assertTrue(0.3989423f == neuron.getValue());
 		
-		neuron.calculate(0.2);
-		assertEquals(0,neuron.getValue().compareTo(0.3910426939754559));
+		neuron.calculate(0.2f);
+		assertTrue(0.3910427f == neuron.getValue());
 		
-		neuron.calculate(0.7);
-		assertEquals(0,neuron.getValue().compareTo(0.3122539333667613));
+		neuron.calculate(0.7f);
+		assertTrue(0.31225395f == neuron.getValue());
 		
-		neuron.calculate(1.0);
-		assertEquals(0,neuron.getValue().compareTo(0.24197072451914337));
+		neuron.calculate(1.0f);
+		assertTrue(0.24197073f == neuron.getValue());
 		
-		neuron.calculate(20.0);
-		assertEquals(0,neuron.getValue().compareTo(5.520948362159823E-88));
+		neuron.calculate(20.0f);
+		assertTrue(0.0f == neuron.getValue());
 	}
 
 }

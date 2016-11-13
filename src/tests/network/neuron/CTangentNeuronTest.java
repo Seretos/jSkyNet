@@ -16,26 +16,26 @@ public class CTangentNeuronTest {
 
 	@Test
 	public void calculate() {
-		neuron.calculate(-2.0);
-		assertEquals(0,neuron.getValue().compareTo(-0.9640275800758169));
+		neuron.calculate(-2.0f);
+		assertTrue(-0.9640276f == neuron.getValue());
 		
-		neuron.calculate(-0.2);
-		assertEquals(0,neuron.getValue().compareTo(-0.197375320224904));
+		neuron.calculate(-0.2f);
+		assertTrue(-0.19737533f == neuron.getValue());
 		
-		neuron.calculate(0.0);
-		assertEquals(0,neuron.getValue().compareTo(0.0));
+		neuron.calculate(0.0f);
+		assertTrue(0.0f == neuron.getValue());
 		
-		neuron.calculate(0.2);
-		assertEquals(0,neuron.getValue().compareTo(0.197375320224904));
+		neuron.calculate(0.2f);
+		assertTrue(0.19737533f == neuron.getValue());
 		
-		neuron.calculate(0.7);
-		assertEquals(0,neuron.getValue().compareTo(0.6043677771171636));
+		neuron.calculate(0.7f);
+		assertTrue(0.6043678f == neuron.getValue());
 		
-		neuron.calculate(1.0);
-		assertEquals(0,neuron.getValue().compareTo(0.7615941559557649));
+		neuron.calculate(1.0f);
+		assertTrue(0.7615942f == neuron.getValue());
 		
-		neuron.calculate(20.0);
-		assertEquals(0,neuron.getValue().compareTo(1.0));
+		neuron.calculate(20.0f);
+		assertTrue(1.0f == neuron.getValue());
 	}
 
 }

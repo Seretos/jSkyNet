@@ -14,20 +14,20 @@ public class CNetworkIntegrationTest {
 
 	@Test
 	public void XOR_network(){
-		INeuron input1 = new CBinaryNeuron(1.0);
-		INeuron input2 = new CBinaryNeuron(1.0);
+		INeuron input1 = new CBinaryNeuron(1.0f);
+		INeuron input2 = new CBinaryNeuron(1.0f);
 		INeuron hidden1 = new CNeuron();
-		INeuron hidden2 = new CBinaryNeuron(1.0);
+		INeuron hidden2 = new CBinaryNeuron(1.0f);
 		INeuron hidden3 = new CNeuron();
-		INeuron output = new CBinaryNeuron(1.0);
+		INeuron output = new CBinaryNeuron(1.0f);
 		
-		CSynapse syn1 = new CSynapse(input1,hidden1,1.0);
-		CSynapse syn2 = new CSynapse(input1,hidden2,0.5);
-		CSynapse syn3 = new CSynapse(input2,hidden2,0.5);
-		CSynapse syn4 = new CSynapse(input2,hidden3,1.0);
-		CSynapse syn5 = new CSynapse(hidden1,output,1.0);
-		CSynapse syn6 = new CSynapse(hidden2,output,-2.0);
-		CSynapse syn7 = new CSynapse(hidden3,output,1.0);
+		CSynapse syn1 = new CSynapse(input1,hidden1,1.0f);
+		CSynapse syn2 = new CSynapse(input1,hidden2,0.5f);
+		CSynapse syn3 = new CSynapse(input2,hidden2,0.5f);
+		CSynapse syn4 = new CSynapse(input2,hidden3,1.0f);
+		CSynapse syn5 = new CSynapse(hidden1,output,1.0f);
+		CSynapse syn6 = new CSynapse(hidden2,output,-2.0f);
+		CSynapse syn7 = new CSynapse(hidden3,output,1.0f);
 		
 		input1.addOutputSynapse(syn1);
 		input1.addOutputSynapse(syn2);
@@ -47,8 +47,8 @@ public class CNetworkIntegrationTest {
 		output.addInputSynapse(syn6);
 		output.addInputSynapse(syn7);
 
-		input1.calculate(1.0);
-		input2.calculate(1.0);
+		input1.calculate(1.0f);
+		input2.calculate(1.0f);
 
 		input1.request();
 		input2.request();
@@ -60,10 +60,10 @@ public class CNetworkIntegrationTest {
 		hidden3.request();
 		output.response();
 		
-		assertEquals(0,output.getValue().compareTo(0.0));
+		assertTrue(0.0f == output.getValue());
 		
-		input1.calculate(1.0);
-		input2.calculate(0.0);
+		input1.calculate(1.0f);
+		input2.calculate(0.0f);
 
 		input1.request();
 		input2.request();
@@ -75,10 +75,10 @@ public class CNetworkIntegrationTest {
 		hidden3.request();
 		output.response();
 		
-		assertEquals(0,output.getValue().compareTo(1.0));
+		assertTrue(1.0f == output.getValue());
 		
-		input1.calculate(0.0);
-		input2.calculate(1.0);
+		input1.calculate(0.0f);
+		input2.calculate(1.0f);
 
 		input1.request();
 		input2.request();
@@ -90,118 +90,118 @@ public class CNetworkIntegrationTest {
 		hidden3.request();
 		output.response();
 		
-		assertEquals(0,output.getValue().compareTo(1.0));
+		assertTrue(1.0f == output.getValue());
 	}
 	
 	@Test
 	public void OR_network(){
-		INeuron input1 = new CBinaryNeuron(1.0);
-		INeuron input2 = new CBinaryNeuron(1.0);
-		INeuron output = new CBinaryNeuron(1.0);
+		INeuron input1 = new CBinaryNeuron(1.0f);
+		INeuron input2 = new CBinaryNeuron(1.0f);
+		INeuron output = new CBinaryNeuron(1.0f);
 		
-		CSynapse syn1 = new CSynapse(input1,output,1.0);
-		CSynapse syn2 = new CSynapse(input2,output,1.0);
+		CSynapse syn1 = new CSynapse(input1,output,1.0f);
+		CSynapse syn2 = new CSynapse(input2,output,1.0f);
 		
 		input1.addOutputSynapse(syn1);
 		input2.addOutputSynapse(syn2);
 		output.addInputSynapse(syn1);
 		output.addInputSynapse(syn2);
 		
-		input1.calculate(0.5);
-		input2.calculate(0.5);
+		input1.calculate(0.5f);
+		input2.calculate(0.5f);
 		
 		input1.request();
 		input2.request();
 		output.response();
 		
-		assertEquals(0,output.getValue().compareTo(0.0));
+		assertTrue(0.0f == output.getValue());
 		
-		input1.calculate(1.0);
-		input2.calculate(0.0);
-		
-		input1.request();
-		input2.request();
-		output.response();
-		
-		assertEquals(0,output.getValue().compareTo(1.0));
-		
-		input1.calculate(0.0);
-		input2.calculate(1.0);
+		input1.calculate(1.0f);
+		input2.calculate(0.0f);
 		
 		input1.request();
 		input2.request();
 		output.response();
 		
-		assertEquals(0,output.getValue().compareTo(1.0));
+		assertTrue(1.0f == output.getValue());
 		
-		input1.calculate(1.0);
-		input2.calculate(1.0);
+		input1.calculate(0.0f);
+		input2.calculate(1.0f);
 		
 		input1.request();
 		input2.request();
 		output.response();
 		
-		assertEquals(0,output.getValue().compareTo(1.0));
+		assertTrue(1.0f == output.getValue());
+		
+		input1.calculate(1.0f);
+		input2.calculate(1.0f);
+		
+		input1.request();
+		input2.request();
+		output.response();
+		
+		assertTrue(1.0f == output.getValue());
 	}
 	
 	@Test
 	public void AND_network(){
-		INeuron input1 = new CBinaryNeuron(1.0);
-		INeuron input2 = new CBinaryNeuron(1.0);
-		INeuron output = new CBinaryNeuron(1.0);
+		INeuron input1 = new CBinaryNeuron(1.0f);
+		INeuron input2 = new CBinaryNeuron(1.0f);
+		INeuron output = new CBinaryNeuron(1.0f);
 		
-		CSynapse syn1 = new CSynapse(input1,output,0.5);
-		CSynapse syn2 = new CSynapse(input2,output,0.5);
+		CSynapse syn1 = new CSynapse(input1,output,0.5f);
+		CSynapse syn2 = new CSynapse(input2,output,0.5f);
 		
 		input1.addOutputSynapse(syn1);
 		input2.addOutputSynapse(syn2);
 		output.addInputSynapse(syn1);
 		output.addInputSynapse(syn2);
 		
-		input1.calculate(0.5);
-		input2.calculate(0.5);
+		input1.calculate(0.5f);
+		input2.calculate(0.5f);
 		
 		input1.request();
 		input2.request();
 		output.response();
 		
-		assertEquals(0,output.getValue().compareTo(0.0));
+		assertTrue(0.0f == output.getValue());
 		
-		input1.calculate(1.0);
-		input2.calculate(1.0);
-		
-		input1.request();
-		input2.request();
-		output.response();
-		
-		assertEquals(0,output.getValue().compareTo(1.0));
-		
-		input1.calculate(1.0);
-		input2.calculate(0.5);
+		input1.calculate(1.0f);
+		input2.calculate(1.0f);
 		
 		input1.request();
 		input2.request();
 		output.response();
 		
-		assertEquals(0,output.getValue().compareTo(0.0));
+		assertTrue(1.0f == output.getValue());
 		
-		input1.calculate(0.0);
-		input2.calculate(0.0);
-		
-		input1.request();
-		input2.request();
-		output.response();
-		
-		assertEquals(0,output.getValue().compareTo(0.0));
-		
-		input1.calculate(5.0);
-		input2.calculate(0.0);
+		input1.calculate(1.0f);
+		input2.calculate(0.5f);
 		
 		input1.request();
 		input2.request();
 		output.response();
 		
-		assertEquals(0,output.getValue().compareTo(0.0));
+		assertTrue(0.0f == output.getValue());
+		
+		input1.calculate(0.0f);
+		input2.calculate(0.0f);
+		
+		input1.request();
+		input2.request();
+		output.response();
+
+		assertTrue(0.0f == output.getValue());
+		
+		input1.calculate(5.0f);
+		input2.calculate(0.0f);
+		
+		input1.request();
+		input2.request();
+		output.response();
+
+		assertTrue(0.0f == output.getValue());
 	}
 	
 	@Test
@@ -209,44 +209,44 @@ public class CNetworkIntegrationTest {
 		INeuron input1 = new CNeuron();
 		INeuron input2 = new CNeuron();
 		INeuron output = new CNeuron();
-		CSynapse syn1 = new CSynapse(input1,output,1.0);
-		CSynapse syn2 = new CSynapse(input2,output,1.0);
+		CSynapse syn1 = new CSynapse(input1,output,1.0f);
+		CSynapse syn2 = new CSynapse(input2,output,1.0f);
 		
-		input1.setValue(0.5);
-		input2.setValue(0.6);
+		input1.setValue(0.5f);
+		input2.setValue(0.6f);
 		
 		input1.addOutputSynapse(syn1);
 		input2.addOutputSynapse(syn2);
 		output.addInputSynapse(syn1);
 		output.addInputSynapse(syn2);
 		
-		assertEquals(0,input1.getValue().compareTo(0.5));
-		assertEquals(0,input2.getValue().compareTo(0.6));
-		assertEquals(0,output.getValue().compareTo(0.0));
-		assertEquals(0,syn1.getInput().compareTo(0.0));
-		assertEquals(0,syn2.getInput().compareTo(0.0));
+		assertTrue(0.5f == input1.getValue());
+		assertTrue(0.6f == input2.getValue());
+		assertTrue(0.0f == output.getValue());
+		assertTrue(0.0f == syn1.getInput());
+		assertTrue(0.0f == syn2.getInput());
 		
 		input1.request();
 		input2.request();
 		output.request();
 		
-		assertEquals(0,input1.getValue().compareTo(0.0));
-		assertEquals(0,input2.getValue().compareTo(0.0));
-		assertEquals(0,output.getValue().compareTo(0.0));
-		assertEquals(0,syn1.getInput().compareTo(0.5));
-		assertEquals(0,syn2.getInput().compareTo(0.6));
+		assertTrue(0.0f == input1.getValue());
+		assertTrue(0.0f == input2.getValue());
+		assertTrue(0.0f == output.getValue());
+		assertTrue(0.5f == syn1.getInput());
+		assertTrue(0.6f == syn2.getInput());
 		
 		input1.response();
 		input2.response();
 		output.response();
 		
-		assertEquals(0,input1.getValue().compareTo(0.0));
-		assertEquals(0,input2.getValue().compareTo(0.0));
-		assertEquals(0,output.getValue().compareTo(1.1));
+		assertTrue(0.0f == input1.getValue());
+		assertTrue(0.0f == input2.getValue());
+		assertTrue(1.1f == output.getValue());
 		
 		output.clear();
-		assertEquals(0,syn1.getInput().compareTo(0.0));
-		assertEquals(0,syn2.getInput().compareTo(0.0));
+		assertTrue(0.0f == syn1.getInput());
+		assertTrue(0.0f == syn2.getInput());
 	}
 	
 	@Test
@@ -254,45 +254,44 @@ public class CNetworkIntegrationTest {
 		INeuron input1 = new CNeuron();
 		INeuron input2 = new CNeuron();
 		INeuron output = new CNeuron();
-		CSynapse syn1 = new CSynapse(input1,output,0.5);
-		CSynapse syn2 = new CSynapse(input2,output,0.6);
+		CSynapse syn1 = new CSynapse(input1,output,0.5f);
+		CSynapse syn2 = new CSynapse(input2,output,0.6f);
 		
-		input1.setValue(0.5);
-		input2.setValue(0.6);
+		input1.setValue(0.5f);
+		input2.setValue(0.6f);
 		
 		input1.addOutputSynapse(syn1);
 		input2.addOutputSynapse(syn2);
 		output.addInputSynapse(syn1);
 		output.addInputSynapse(syn2);
 		
-		assertEquals(0,input1.getValue().compareTo(0.5));
-		assertEquals(0,input2.getValue().compareTo(0.6));
-		assertEquals(0,output.getValue().compareTo(0.0));
-		assertEquals(0,syn1.getInput().compareTo(0.0));
-		assertEquals(0,syn2.getInput().compareTo(0.0));
-		
+		assertTrue(0.5f == input1.getValue());
+		assertTrue(0.6f == input2.getValue());
+		assertTrue(0.0f == output.getValue());
+		assertTrue(0.0f == syn1.getInput());
+		assertTrue(0.0f == syn2.getInput());		
 		input1.request();
 		input2.request();
 		output.request();
 		
-		assertEquals(0,input1.getValue().compareTo(0.0));
-		assertEquals(0,input2.getValue().compareTo(0.0));
-		assertEquals(0,output.getValue().compareTo(0.0));
-		assertEquals(0,syn1.getInput().compareTo(0.5));
-		assertEquals(0,syn2.getInput().compareTo(0.6));
+		assertTrue(0.0f == input1.getValue());
+		assertTrue(0.0f == input2.getValue());
+		assertTrue(0.0f == output.getValue());
+		assertTrue(0.5f == syn1.getInput());
+		assertTrue(0.6f == syn2.getInput());
 		
 		input1.response();
 		input2.response();
 		output.response();
 		
-		assertEquals(0,input1.getValue().compareTo(0.0));
-		assertEquals(0,input2.getValue().compareTo(0.0));
-		assertEquals(0,output.getValue().compareTo(0.61));
+		assertTrue(0.0f == input1.getValue());
+		assertTrue(0.0f == input2.getValue());
+		assertTrue(0.61f == output.getValue());
 		
 		output.clear();
 		
-		assertEquals(0,syn1.getInput().compareTo(0.0));
-		assertEquals(0,syn2.getInput().compareTo(0.0));
+		assertTrue(0.0f == syn1.getInput());
+		assertTrue(0.0f == syn2.getInput());
 	}
 	
 	@Test
@@ -303,10 +302,10 @@ public class CNetworkIntegrationTest {
 		INeuron hidden2 = new CNeuron();
 		INeuron output = new CNeuron();
 		
-		CSynapse syn1 = new CSynapse(input1,hidden1,1.0);
-		CSynapse syn2 = new CSynapse(input2,hidden2,1.0);
-		CSynapse syn3 = new CSynapse(hidden1,output,0.5);
-		CSynapse syn4 = new CSynapse(hidden2,output,0.5);
+		CSynapse syn1 = new CSynapse(input1,hidden1,1.0f);
+		CSynapse syn2 = new CSynapse(input2,hidden2,1.0f);
+		CSynapse syn3 = new CSynapse(hidden1,output,0.5f);
+		CSynapse syn4 = new CSynapse(hidden2,output,0.5f);
 		
 		CLayer inputLayer = new CLayer();
 		CLayer hiddenLayer = new CLayer();
@@ -327,22 +326,22 @@ public class CNetworkIntegrationTest {
 		hiddenLayer.addNeuron(hidden2);
 		outputLayer.addNeuron(output);
 		
-		input1.setValue(1.0);
-		input2.setValue(2.0);
+		input1.setValue(1.0f);
+		input2.setValue(2.0f);
 		
 		inputLayer.request();
 		hiddenLayer.response();
 		
-		assertEquals(0,input1.getValue().compareTo(0.0));
-		assertEquals(0,input2.getValue().compareTo(0.0));
-		assertEquals(0,hidden1.getValue().compareTo(1.0));
-		assertEquals(0,hidden2.getValue().compareTo(2.0));
+		assertTrue(0.0f == input1.getValue());
+		assertTrue(0.0f == input2.getValue());
+		assertTrue(1.0f == hidden1.getValue());
+		assertTrue(2.0f == hidden2.getValue());
 		
 		hiddenLayer.request();
 		outputLayer.response();
 		
-		assertEquals(0,hidden1.getValue().compareTo(0.0));
-		assertEquals(0,hidden2.getValue().compareTo(0.0));
-		assertEquals(0,output.getValue().compareTo(1.5));
+		assertTrue(0.0f == hidden1.getValue());
+		assertTrue(0.0f == hidden2.getValue());
+		assertTrue(1.5f == output.getValue());
 	}
 }

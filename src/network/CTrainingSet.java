@@ -4,29 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CTrainingSet {
-	private List<Double> inputs;
-	private List<Double> outputs;
+	private List<Float> inputs;
+	private List<Float> outputs;
 	
 	public CTrainingSet(){
-		inputs = new ArrayList<Double>();
-		outputs = new ArrayList<Double>();
+		inputs = new ArrayList<Float>();
+		outputs = new ArrayList<Float>();
 	}
 	
-	public CTrainingSet addInput(Double in){
+	public CTrainingSet addInput(float in){
 		inputs.add(in);
 		return this;
 	}
 	
-	public CTrainingSet addOutput(Double out){
+	public CTrainingSet addOutput(float out){
 		outputs.add(out);
 		return this;
 	}
 	
-	public List<Double> getInputs(){
+	public List<Float> getInputs(){
 		return inputs;
 	}
 	
-	public List<Double> getOutputs(){
+	public List<Float> getOutputs(){
 		return outputs;
 	}
 }

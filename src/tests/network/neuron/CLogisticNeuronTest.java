@@ -17,26 +17,26 @@ public class CLogisticNeuronTest {
 
 	@Test
 	public void calculate() {
-		neuron.calculate(-2.0);
-		assertEquals(0,neuron.getValue().compareTo(0.11920292202211757));
+		neuron.calculate(-2.0f);
+		assertTrue(0.11920292f == neuron.getValue());
 		
-		neuron.calculate(-0.2);
-		assertEquals(0,neuron.getValue().compareTo(0.45016600268752216));
+		neuron.calculate(-0.2f);
+		assertTrue(0.45016602f == neuron.getValue());
 		
-		neuron.calculate(0.0);
-		assertEquals(0,neuron.getValue().compareTo(0.5));
+		neuron.calculate(0.0f);
+		assertTrue(0.5f == neuron.getValue());
 		
-		neuron.calculate(0.2);
-		assertEquals(0,neuron.getValue().compareTo(0.549833997312478));
+		neuron.calculate(0.2f);
+		assertTrue(0.54983395f == neuron.getValue());
 		
-		neuron.calculate(0.7);
-		assertEquals(0,neuron.getValue().compareTo(0.668187772168166));
+		neuron.calculate(0.7f);
+		assertTrue(0.66818774f == neuron.getValue());
 		
-		neuron.calculate(1.0);
-		assertEquals(0,neuron.getValue().compareTo(0.7310585786300049));
+		neuron.calculate(1.0f);
+		assertTrue(0.7310586f == neuron.getValue());
 		
-		neuron.calculate(20.0);
-		assertEquals(0,neuron.getValue().compareTo(0.9999999979388463));
+		neuron.calculate(20.0f);
+		assertTrue(1.0f == neuron.getValue());
 	}
 
 }

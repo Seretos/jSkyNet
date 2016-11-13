@@ -20,16 +20,16 @@ public class CTrainingSetTest {
 		assertEquals(0,trainingSet.getInputs().size());
 		assertEquals(0,trainingSet.getOutputs().size());
 		
-		trainingSet.addInput(0.1).addInput(0.2).addInput(0.3).addOutput(0.4).addOutput(0.5);
+		trainingSet.addInput(0.1f).addInput(0.2f).addInput(0.3f).addOutput(0.4f).addOutput(0.5f);
 		
 		assertEquals(3,trainingSet.getInputs().size());
 		assertEquals(2,trainingSet.getOutputs().size());
 		
-		assertEquals(0,trainingSet.getInputs().get(0).compareTo(0.1));
-		assertEquals(0,trainingSet.getInputs().get(1).compareTo(0.2));
-		assertEquals(0,trainingSet.getInputs().get(2).compareTo(0.3));
-		assertEquals(0,trainingSet.getOutputs().get(0).compareTo(0.4));
-		assertEquals(0,trainingSet.getOutputs().get(1).compareTo(0.5));
+		assertTrue(0.1f == trainingSet.getInputs().get(0));
+		assertTrue(0.2f == trainingSet.getInputs().get(1));
+		assertTrue(0.3f == trainingSet.getInputs().get(2));
+		assertTrue(0.4f == trainingSet.getOutputs().get(0));
+		assertTrue(0.5f == trainingSet.getOutputs().get(1));
 	}
 
 }

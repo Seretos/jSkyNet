@@ -4,8 +4,8 @@ import network.CBaseNeuron;
 
 public class CTangentNeuron extends CBaseNeuron{
 
-	public void calculate(Double val) {
-		super.setValue(Math.tanh(val));
+	public void calculate(float val) {
+		super.setValue((float)Math.tanh(val));
 	}
 
 }

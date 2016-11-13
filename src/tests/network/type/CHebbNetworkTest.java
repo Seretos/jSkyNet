@@ -16,7 +16,7 @@ public class CHebbNetworkTest {
 	private CHebbNetwork network;
 	@Before
 	public void setUp() throws Exception {
-		network = new CHebbNetwork(0.2);
+		network = new CHebbNetwork(0.2f);
 	}
 
 	@Test
@@ -28,8 +28,8 @@ public class CHebbNetworkTest {
 		INeuron input2 = new CNeuron();
 		INeuron output = new CNeuron();
 		
-		CSynapse syn1 = new CSynapse(input1,output,0.4);
-		CSynapse syn2 = new CSynapse(input2,output,0.5);
+		CSynapse syn1 = new CSynapse(input1,output,0.4f);
+		CSynapse syn2 = new CSynapse(input2,output,0.5f);
 
 		inputLayer.addNeuron(input1);
 		inputLayer.addNeuron(input2);
@@ -41,15 +41,14 @@ public class CHebbNetworkTest {
 		network.addSynapse(syn1);
 		network.addSynapse(syn2);
 		
-		input1.calculate(0.6);
-		input2.calculate(0.7);
+		input1.calculate(0.6f);
+		input2.calculate(0.7f);
 		
 		network.execute();
-		assertEquals(0,output.getValue().compareTo(0.59));
+		assertTrue(0.59000003f == output.getValue());
 		
-		assertEquals(0,syn1.getWeight().compareTo(0.4708));
-		System.out.println(syn2.getWeight());
-		assertEquals(0,syn2.getWeight().compareTo(0.5826));
+		assertTrue(0.4708f == syn1.getWeight());
+		assertTrue(0.5826f == syn2.getWeight());
 	}
 
 }

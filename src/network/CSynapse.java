@@ -3,14 +3,14 @@ package network;
 public class CSynapse {
 	private INeuron sourceNeuron;
 	private INeuron targetNeuron;
-	private Double weight;
-	private Double input;
+	private float weight;
+	private float input;
 	
-	public CSynapse(INeuron source, INeuron target, Double w){
+	public CSynapse(INeuron source, INeuron target, float w){
 		sourceNeuron = source;
 		targetNeuron = target;
 		weight = w;
-		input = 0.0;
+		input = 0.0f;
 	}
 	
 	public INeuron getSourceNeuron(){
@@ -21,23 +21,23 @@ public class CSynapse {
 		return targetNeuron;
 	}
 	
-	public void setWeight(Double w){
+	public void setWeight(float w){
 		weight = w;
 	}
 	
-	public Double getWeight(){
+	public float getWeight(){
 		return weight;
 	}
 	
-	public void setInput(Double i){
+	public void setInput(float i){
 		input = i;
 	}
 	
-	public Double getInput(){
+	public float getInput(){
 		return input;
 	}
 	
-	public Double calculate(){
+	public float calculate(){
 		return input * weight;
 	}
 }

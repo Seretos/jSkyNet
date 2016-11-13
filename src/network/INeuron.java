@@ -9,15 +9,15 @@ public interface INeuron {
 	public List<CSynapse> getInputSynapses();
 	public List<CSynapse> getOutputSynapses();
 	
-	public void setValue(Double val);
-	public Double getValue();
+	public void setValue(float val);
+	public float getValue();
 	
 	public void request();
 	public void response();
 	public void clear();
 	
-	public void calculate(Double val);
+	public void calculate(float val);
 	
-	public void setThreshold(Double t);
-	public Double getThreshold();
+	public void setThreshold(float t);
+	public float getThreshold();
 }

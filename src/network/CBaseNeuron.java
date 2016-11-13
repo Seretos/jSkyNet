@@ -6,23 +6,23 @@ import java.util.List;
 public abstract class CBaseNeuron implements INeuron {
 	protected List<CSynapse> inputSynapses;
 	protected List<CSynapse> outputSynapses;
-	protected Double value;
-	protected Double threshold;
+	protected float value;
+	protected float threshold;
 	
-	abstract public void calculate(Double val);
+	abstract public void calculate(float val);
 	
 	public CBaseNeuron(){
 		inputSynapses = new ArrayList<CSynapse>();
 		outputSynapses = new ArrayList<CSynapse>();
-		value = 0.0;
-		threshold = 0.0;
+		value = 0.0f;
+		threshold = 0.0f;
 	}
 
-	public void setThreshold(Double t){
+	public void setThreshold(float t){
 		threshold = t;
 	}
 	
-	public Double getThreshold(){
+	public float getThreshold(){
 		return threshold;
 	}
 	
@@ -42,11 +42,11 @@ public abstract class CBaseNeuron implements INeuron {
 		return outputSynapses;
 	}
 	
-	public void setValue(Double val){
+	public void setValue(float val){
 		value = val;
 	}
 	
-	public Double getValue(){
+	public float getValue(){
 		return value;
 	}
 	
@@ -54,24 +54,24 @@ public abstract class CBaseNeuron implements INeuron {
 		for(CSynapse synapse : outputSynapses){
 			synapse.setInput(value);
 		}
-		value = 0.0;
+		value = 0.0f;
 	}
 	
 	public void response(){
-		Double val = 0.0;
+		float val = 0.0f;
 		for(CSynapse synapse : inputSynapses){
 			val += synapse.calculate();
 		}
 		if(val >= threshold){
 			this.calculate(val);
 		}else{
-			this.setValue(0.0);
+			this.setValue(0.0f);
 		}
 	}
 	
 	public void clear(){
 		for(CSynapse synapse : inputSynapses){
-			synapse.setInput(0.0);
+			synapse.setInput(0.0f);
 		}
 	}
 }

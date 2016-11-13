@@ -16,36 +16,35 @@ public class CLinearNeuronTest {
 
 	@Test
 	public void calculate() {
-		neuron.calculate(0.2);
-		assertEquals(0,neuron.getValue().compareTo(0.2));
+		neuron.calculate(0.2f);
+		assertTrue(0.2f == neuron.getValue());
 		
-		neuron.calculate(-0.2);
-		assertEquals(0,neuron.getValue().compareTo(-0.2));
+		neuron.calculate(-0.2f);
+		assertTrue(-0.2f == neuron.getValue());
 		
-		neuron.calculate(0.7);
-		assertEquals(0,neuron.getValue().compareTo(0.7));
+		neuron.calculate(0.7f);
+		assertTrue(0.7f == neuron.getValue());
 		
-		neuron.setIntersection(1.0);
+		neuron.setIntersection(1.0f);
 		
-		neuron.calculate(0.2);
-		assertEquals(0,neuron.getValue().compareTo(1.2));
+		neuron.calculate(0.2f);
+		assertTrue(1.2f == neuron.getValue());
 		
-		neuron.calculate(-0.2);
-		assertEquals(0,neuron.getValue().compareTo(0.8));
+		neuron.calculate(-0.2f);
+		assertTrue(0.8f == neuron.getValue());
 		
-		neuron.calculate(0.7);
-		assertEquals(0,neuron.getValue().compareTo(1.7));
+		neuron.calculate(0.7f);
+		assertTrue(1.7f == neuron.getValue());
 		
-		neuron.setGradient(2.0);
+		neuron.setGradient(2.0f);
 		
-		neuron.calculate(0.2);
-		assertEquals(0,neuron.getValue().compareTo(1.4));
+		neuron.calculate(0.2f);
+		assertTrue(1.4f == neuron.getValue());
 		
-		neuron.calculate(-0.2);
-		assertEquals(0,neuron.getValue().compareTo(0.6));
+		neuron.calculate(-0.2f);
+		assertTrue(0.6f == neuron.getValue());
 		
-		neuron.calculate(0.7);
-		assertEquals(0,neuron.getValue().compareTo(2.4));
+		neuron.calculate(0.7f);
+		assertTrue(2.4f == neuron.getValue());
 	}
-
 }

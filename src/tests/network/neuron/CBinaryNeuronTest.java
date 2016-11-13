@@ -13,26 +13,26 @@ public class CBinaryNeuronTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		neuron = new CBinaryNeuron(0.0);
+		neuron = new CBinaryNeuron(0.0f);
 	}
 
 	@Test
 	public void calculate() {
-		assertEquals(0,neuron.getThreshold().compareTo(0.0));
+		assertTrue(0.0f == neuron.getThreshold());
 		
-		neuron.calculate(-0.1);
-		assertEquals(0,neuron.getValue().compareTo(0.0));
+		neuron.calculate(-0.1f);
+		assertTrue(0.0f == neuron.getValue());
 		
-		neuron.calculate(0.1);
-		assertEquals(0,neuron.getValue().compareTo(1.0));
+		neuron.calculate(0.1f);
+		assertTrue(1.0f == neuron.getValue());
 		
-		neuron.setThreshold(0.2);
+		neuron.setThreshold(0.2f);
 		
-		neuron.calculate(0.1);
-		assertEquals(0,neuron.getValue().compareTo(0.0));
+		neuron.calculate(0.1f);
+		assertTrue(0.0f == neuron.getValue());
 		
-		neuron.calculate(0.2);
-		assertEquals(0,neuron.getValue().compareTo(1.0));
+		neuron.calculate(0.2f);
+		assertTrue(1.0f == neuron.getValue());
 	}
 
 }
