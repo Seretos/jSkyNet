@@ -56,9 +56,9 @@ public class CBackpropagationNetwork extends CNetwork{
 				netIn += syn.getInput();
 			}
 			float val = neuron.getValue();
-			if(Float.isInfinite(val)){
+			/*if(Float.isInfinite(val)){
 				val = 0.0f;
-			}
+			}*/
 			float delta = set.getOutputs().get(i) - val;
 			float uDelta = delta;
 			if(uDelta < 0){
@@ -85,9 +85,9 @@ public class CBackpropagationNetwork extends CNetwork{
 				}
 				if(uDelta > tolerance){
 					Float nextWeight = learn * dNeuron.getDelta() * syn.getInput();
-					if(nextWeight.isNaN()||nextWeight.isInfinite()){
+					/*if(nextWeight.isNaN()||nextWeight.isInfinite()){
 						nextWeight = 0.0f;
-					}
+					}*/
 					syn.setWeight(syn.getWeight() + nextWeight);
 					float delta = dNeuron.getDelta() * syn.getWeight();
 					nextBag.addDelta(syn.getSourceNeuron(),delta);
