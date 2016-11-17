@@ -25,7 +25,7 @@ public class CDeltaNeuronBagTest {
 		assertEquals(2,bag.getDeltaNeuron().size());
 		assertSame(neuron1,bag.getDeltaNeuron().get(0).getNeuron());
 		assertSame(neuron2,bag.getDeltaNeuron().get(1).getNeuron());
-		assertTrue(bag.getDeltaNeuron().get(0).getDelta() == 0.4f);
+		assertTrue(bag.getDeltaNeuron().get(0).getDelta() == 0.030000001f);
 		assertTrue(bag.getDeltaNeuron().get(1).getDelta() == 0.2f);
 	}
 

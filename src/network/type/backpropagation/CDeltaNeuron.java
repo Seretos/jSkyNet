@@ -20,6 +20,6 @@ public class CDeltaNeuron {
 	}
 	
 	public void addDelta(float d){
-		delta += d;
+		delta *= d;
 	}
 }

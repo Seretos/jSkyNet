@@ -36,10 +36,13 @@ public class CBackpropagationNetwork extends CNetwork{
 			setInputs(set);
 			super.run(steps);
 			CDeltaNeuronBag bag = buildOutputBag(set);
-			bag = buildNextBag(bag);
-			setInputs(set);
-			super.run(steps-1);
-			bag = buildNextBag(bag);
+			int currentSteps = steps;
+			do{
+				bag = buildNextBag(bag);
+				setInputs(set);
+				currentSteps--;
+				super.run(currentSteps);
+			}while(currentSteps > 0);
 		}
 	}
 	
@@ -52,9 +55,20 @@ public class CBackpropagationNetwork extends CNetwork{
 			for(CSynapse syn : neuron.getInputSynapses()){
 				netIn += syn.getInput();
 			}
-			float delta = set.getOutputs().get(i) - neuron.getValue();
-			delta = netIn * delta;
-			bag.addDelta(outputLayer.getNeurons().get(i), delta);
+			float val = neuron.getValue();
+			if(Float.isInfinite(val)){
+				val = 0.0f;
+			}
+			float delta = set.getOutputs().get(i) - val;
+			float uDelta = delta;
+			if(uDelta < 0){
+				uDelta = -uDelta;
+			}
+			if(uDelta > tolerance){
+				delta = netIn * delta;
+				//System.out.println(delta);
+				bag.addDelta(outputLayer.getNeurons().get(i), delta);
+			}
 		}
 		
 		return bag;
@@ -71,11 +85,12 @@ public class CBackpropagationNetwork extends CNetwork{
 				}
 				if(uDelta > tolerance){
 					Float nextWeight = learn * dNeuron.getDelta() * syn.getInput();
-					if(nextWeight.isNaN()){
+					if(nextWeight.isNaN()||nextWeight.isInfinite()){
 						nextWeight = 0.0f;
 					}
 					syn.setWeight(syn.getWeight() + nextWeight);
-					nextBag.addDelta(syn.getSourceNeuron(), dNeuron.getDelta() * syn.getWeight());
+					float delta = dNeuron.getDelta() * syn.getWeight();
+					nextBag.addDelta(syn.getSourceNeuron(),delta);
 				}
 			}
 		}

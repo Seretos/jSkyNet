@@ -19,7 +19,7 @@ public class CDeltaNeuronTest {
 		assertTrue(0.1f == deltaNeuron.getDelta());
 		
 		deltaNeuron.addDelta(0.2f);
-		assertTrue(0.3f == deltaNeuron.getDelta());
+		assertTrue(0.020000001f == deltaNeuron.getDelta());
 	}
 
 }
