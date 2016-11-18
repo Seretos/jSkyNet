@@ -93,3 +93,10 @@ sets.add(t3);
 //train the network with the training set. the second parameter is the step count from input to output neurons
 network.train(sets,2);
 ```
+
+TODO:
+-----
+
+- advanced properties for all neuron types
+- save networks to file
+- evolutionary algorithm
