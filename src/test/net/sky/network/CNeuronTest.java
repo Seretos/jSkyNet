@@ -22,6 +22,17 @@ public class CNeuronTest {
 	}
 
 	@Test
+	public void id() {
+		CNeuron neuron = new CNeuron();
+
+		assertEquals(-1, neuron.getId());
+
+		neuron.setId(2);
+
+		assertEquals(2, neuron.getId());
+	}
+
+	@Test
 	public void initialize() {
 		CSynapse inSyn1 = Mockito.mock(CSynapse.class);
 		CSynapse inSyn2 = Mockito.mock(CSynapse.class);
@@ -107,14 +118,14 @@ public class CNeuronTest {
 	}
 
 	@Test
-	public void unsetThreshold(){
+	public void unsetThreshold() {
 		neuron.setThreshold(0.5f);
-		
+
 		neuron.unsetThreshold();
-		
+
 		assertTrue(0.0f == neuron.getThreshold());
 	}
-	
+
 	@Test
 	public void calculate() {
 		neuron.calculate(0.1f);

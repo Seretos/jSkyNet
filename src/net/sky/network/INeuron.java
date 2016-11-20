@@ -23,7 +23,13 @@ public interface INeuron {
 
 	public void calculate(float val);
 
+	public boolean isThreshold();
+
 	public void setThreshold(float t);
 
 	public float getThreshold();
+
+	public void setId(int i);
+
+	public int getId();
 }

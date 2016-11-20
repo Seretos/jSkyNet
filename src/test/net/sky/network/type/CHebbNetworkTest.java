@@ -6,22 +6,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import net.sky.network.CLayer;
+import net.sky.network.CNetwork;
 import net.sky.network.CNeuron;
 import net.sky.network.CSynapse;
 import net.sky.network.INeuron;
 import net.sky.network.type.CHebbNetwork;
 
 public class CHebbNetworkTest {
-
-	private CHebbNetwork network;
-
-	@Before
-	public void setUp() throws Exception {
-		network = new CHebbNetwork(0.2f);
-	}
-
 	@Test
 	public void execute() {
+		CHebbNetwork network = new CHebbNetwork(0.2f);
 		CLayer inputLayer = new CLayer();
 		CLayer outputLayer = new CLayer();
 
@@ -51,5 +45,4 @@ public class CHebbNetworkTest {
 		assertTrue(0.4708f == syn1.getWeight());
 		assertTrue(0.5826f == syn2.getWeight());
 	}
-
 }

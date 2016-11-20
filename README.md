@@ -94,6 +94,6 @@ network.train(sets,2);
 TODO:
 -----
 
-- advanced properties for all neuron types
+- convert networks
 - save networks to file
 - evolutionary algorithm

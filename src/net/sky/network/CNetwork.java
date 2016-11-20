@@ -3,7 +3,7 @@ package net.sky.network;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CNetwork {
+public class CNetwork implements INetwork {
 	protected List<CLayer> layers;
 	protected List<CSynapse> synapses;
 	protected CLayer inputLayer;
@@ -14,6 +14,13 @@ public class CNetwork {
 		synapses = new ArrayList<CSynapse>();
 		inputLayer = null;
 		outputLayer = null;
+	}
+
+	public void initializeNeuronIds() {
+		int id = 0;
+		for (CLayer layer : layers) {
+			id = layer.initializeNeuronIds(id);
+		}
 	}
 
 	public void setInputLayer(CLayer layer) {
@@ -32,6 +39,10 @@ public class CNetwork {
 
 	public CLayer getLayer(int index) {
 		return layers.get(index);
+	}
+
+	public List<CLayer> getLayers() {
+		return layers;
 	}
 
 	public CLayer getInputLayer() {

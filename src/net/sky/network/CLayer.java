@@ -10,6 +10,14 @@ public class CLayer {
 		neurons = new ArrayList<INeuron>();
 	}
 
+	public int initializeNeuronIds(int id) {
+		for (INeuron neuron : neurons) {
+			neuron.setId(id);
+			id++;
+		}
+		return id;
+	}
+
 	public void addNeuron(INeuron neuron) {
 		neurons.add(neuron);
 	}

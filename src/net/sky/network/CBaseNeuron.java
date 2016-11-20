@@ -9,6 +9,7 @@ public abstract class CBaseNeuron implements INeuron {
 	protected float value;
 	protected float threshold;
 	protected boolean thresholdSetted;
+	protected int id;
 
 	abstract public void calculate(float val);
 
@@ -18,11 +19,24 @@ public abstract class CBaseNeuron implements INeuron {
 		value = 0.0f;
 		threshold = 0.0f;
 		thresholdSetted = false;
+		id = -1;
+	}
+
+	public void setId(int i) {
+		id = i;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public void setThreshold(float t) {
 		threshold = t;
 		thresholdSetted = true;
+	}
+
+	public boolean isThreshold() {
+		return thresholdSetted;
 	}
 
 	public void unsetThreshold() {

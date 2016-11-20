@@ -24,6 +24,27 @@ public class CNetworkTest {
 	}
 
 	@Test
+	public void initializeNeuronIds() {
+		CLayer inputLayer = Mockito.mock(CLayer.class);
+		CLayer hiddenLayer = Mockito.mock(CLayer.class);
+		CLayer outputLayer = Mockito.mock(CLayer.class);
+
+		network.addLayer(inputLayer);
+		network.addLayer(hiddenLayer);
+		network.addLayer(outputLayer);
+
+		when(inputLayer.initializeNeuronIds(0)).thenReturn(2);
+		when(hiddenLayer.initializeNeuronIds(2)).thenReturn(5);
+		when(outputLayer.initializeNeuronIds(5)).thenReturn(6);
+
+		network.initializeNeuronIds();
+
+		verify(inputLayer).initializeNeuronIds(Matchers.eq(0));
+		verify(hiddenLayer).initializeNeuronIds(Matchers.eq(2));
+		verify(outputLayer).initializeNeuronIds(Matchers.eq(5));
+	}
+
+	@Test
 	public void getLayers() {
 		CLayer inputLayer = Mockito.mock(CLayer.class);
 		CLayer hiddenLayer = Mockito.mock(CLayer.class);
@@ -35,6 +56,7 @@ public class CNetworkTest {
 		assertSame(inputLayer, network.getLayer(0));
 		assertSame(hiddenLayer, network.getLayer(1));
 		assertSame(outputLayer, network.getLayer(2));
+		assertEquals(3, network.getLayers().size());
 	}
 
 	@Test
