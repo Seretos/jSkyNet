@@ -45,12 +45,9 @@ CLayer layer = new CLayer();	//create a layer to capsule neurons
 
 layer.addNeuron(neuron);		//add the neuron to the layer
 
-network.addLayer(layer);		//add the layer to the network
-
-/*on a BackpropagationNetwork also the functions setInputLayer 
-and setOutputLayer exists*/
-network.setInputLayer(layer);
-network.setOutputLayer(layer);
+network.setInputLayer(layer);	//add the layer as input layer to the network
+network.setOutputLayer(layer);	//add the layer as output layer to the network
+network.addLayer(layer);		//add the layer as hidden layer to the network
 ```
 
 create a synapse
