@@ -18,9 +18,9 @@ Usage
 create a network
 
 ```java
-import main.java.network.CNetwork;
-import main.java.network.type.CHebbNetwork;
-import main.java.network.type.CBackpropagationNetwork;
+import net.sky.network.CNetwork;
+import net.sky.network.type.CHebbNetwork;
+import net.sky.network.type.CBackpropagationNetwork;
 
 /*create a static network*/
 CNetwork network = new CNetwork();
@@ -36,9 +36,9 @@ CBackpropagationNetwork network = new CBackpropagationNetwork(0.1f, 0.01f);
 create a neuron
 
 ```java
-import main.java.network.CNeuron;
-import main.java.network.INeuron;
-import main.java.network.CLayer;
+import net.sky.network.CNeuron;
+import net.sky.network.INeuron;
+import net.sky.network.CLayer;
 
 INeuron neuron = new CNeuron(); //create a neuron
 CLayer layer = new CLayer();	//create a layer to capsule neurons
@@ -56,7 +56,7 @@ network.setOutputLayer(layer);
 create a synapse
 
 ```java
-import main.java.network.CSynapse;
+import net.sky.network.CSynapse;
 
 CSynapse synapse = new CSynapse(neuron1,neuron2,0.1f);	//create a synapse from neuron1 to neuron2 with an weight of 0.1f
 network.addSynapse(synapse);							//add the synapse to the network
@@ -73,7 +73,7 @@ network.run(2);		//run the execute method 2 times
 train a backpropagation network
 
 ```java
-import main.java.network.CTrainingSet;
+import net.sky.network.CTrainingSet;
 
 //create your training sets
 CTrainingSet t1 = new CTrainingSet();
