@@ -6,18 +6,40 @@ import java.util.List;
 public class CNetwork {
 	protected List<CLayer> layers;
 	protected List<CSynapse> synapses;
+	protected CLayer inputLayer;
+	protected CLayer outputLayer;
 
 	public CNetwork() {
 		layers = new ArrayList<CLayer>();
 		synapses = new ArrayList<CSynapse>();
+		inputLayer = null;
+		outputLayer = null;
+	}
+
+	public void setInputLayer(CLayer layer) {
+		addLayer(layer);
+		inputLayer = layer;
+	}
+
+	public void setOutputLayer(CLayer layer) {
+		addLayer(layer);
+		outputLayer = layer;
 	}
 
 	public void addLayer(CLayer layer) {
 		layers.add(layer);
 	}
 
-	public List<CLayer> getLayers() {
-		return layers;
+	public CLayer getLayer(int index) {
+		return layers.get(index);
+	}
+
+	public CLayer getInputLayer() {
+		return inputLayer;
+	}
+
+	public CLayer getOutputLayer() {
+		return outputLayer;
 	}
 
 	public void addSynapse(CSynapse synapse) {

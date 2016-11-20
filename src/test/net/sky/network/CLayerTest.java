@@ -33,6 +33,9 @@ public class CLayerTest {
 		assertSame(neuron1, neurons.get(0));
 		assertSame(neuron2, neurons.get(1));
 
+		assertSame(neuron1,layer.getNeuron(0));
+		assertSame(neuron2,layer.getNeuron(1));
+		
 		// fail("Not yet implemented");
 	}
 

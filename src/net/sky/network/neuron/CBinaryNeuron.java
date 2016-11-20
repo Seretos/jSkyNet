@@ -10,7 +10,7 @@ public class CBinaryNeuron extends CBaseNeuron {
 	}
 
 	public void calculate(float val) {
-		if (val >= threshold) {
+		if (super.getThresholdValue(val) > 0.0f) {
 			super.setValue(1.0f);
 		} else {
 			super.setValue(0.0f);

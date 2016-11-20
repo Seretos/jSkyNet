@@ -144,6 +144,7 @@ public class CBackpropagationNetworkIntegrationTest {
 
 	@Test
 	public void XOR_network() {
+		network = new CBackpropagationNetwork(0.1f, 0.3f);
 		INeuron input1 = new CNeuron();
 		INeuron input2 = new CNeuron();
 		INeuron hidden1 = new CNeuron();
@@ -197,6 +198,16 @@ public class CBackpropagationNetworkIntegrationTest {
 
 		for (int i = 0; i < 100; i++) {
 			network.train(sets, 2);
+			/*
+			 * System.out.println("--------------------------");
+			 * System.out.println("syn1: " + syn1.getWeight());
+			 * System.out.println("syn2: " + syn2.getWeight());
+			 * System.out.println("syn3: " + syn3.getWeight());
+			 * System.out.println("syn4: " + syn4.getWeight());
+			 * System.out.println("syn5: " + syn5.getWeight());
+			 * System.out.println("syn6: " + syn6.getWeight());
+			 * System.out.println("syn7: " + syn7.getWeight());
+			 */
 		}
 		input1.calculate(1.0f);
 		input2.calculate(0.0f);
@@ -225,7 +236,7 @@ public class CBackpropagationNetworkIntegrationTest {
 
 	@Test
 	public void XOR_network2() {
-		network = new CBackpropagationNetwork(0.01f, 0.1f);
+		network = new CBackpropagationNetwork(0.1f, 0.3f);
 		INeuron input1 = new CNeuron();
 		INeuron input2 = new CNeuron();
 		INeuron hidden1 = new CNeuron();
@@ -288,6 +299,7 @@ public class CBackpropagationNetworkIntegrationTest {
 
 		for (int i = 0; i < 100000; i++) {
 			network.train(sets, 2);
+
 			/*
 			 * System.out.println("-------------------------");
 			 * System.out.println("syn1: " + syn1.getWeight());
@@ -298,6 +310,7 @@ public class CBackpropagationNetworkIntegrationTest {
 			 * System.out.println("syn6: " + syn6.getWeight());
 			 * System.out.println("syn7: " + syn7.getWeight());
 			 */
+
 		}
 
 		input1.calculate(1.0f);

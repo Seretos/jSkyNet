@@ -13,22 +13,10 @@ import net.sky.network.type.backpropagation.CDeltaNeuronBag;
 public class CBackpropagationNetwork extends CNetwork {
 	private float learn;
 	private float tolerance;
-	private CLayer inputLayer;
-	private CLayer outputLayer;
 
 	public CBackpropagationNetwork(float l, float t) {
 		learn = l;
 		tolerance = t;
-	}
-
-	public void setInputLayer(CLayer layer) {
-		super.addLayer(layer);
-		inputLayer = layer;
-	}
-
-	public void setOutputLayer(CLayer layer) {
-		super.addLayer(layer);
-		outputLayer = layer;
 	}
 
 	public void train(List<CTrainingSet> sets, int steps) {
@@ -85,10 +73,9 @@ public class CBackpropagationNetwork extends CNetwork {
 				}
 				if (uDelta > tolerance) {
 					Float nextWeight = learn * dNeuron.getDelta() * syn.getInput();
-					/*
-					 * if(nextWeight.isNaN()||nextWeight.isInfinite()){
-					 * nextWeight = 0.0f; }
-					 */
+					if (nextWeight.isNaN() || nextWeight.isInfinite()) {
+						nextWeight = 0.0f;
+					}
 					syn.setWeight(syn.getWeight() + nextWeight);
 					float delta = dNeuron.getDelta() * syn.getWeight();
 					nextBag.addDelta(syn.getSourceNeuron(), delta);

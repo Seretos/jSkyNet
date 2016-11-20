@@ -14,6 +14,10 @@ public class CLayer {
 		neurons.add(neuron);
 	}
 
+	public INeuron getNeuron(int index) {
+		return neurons.get(index);
+	}
+
 	public List<INeuron> getNeurons() {
 		return neurons;
 	}

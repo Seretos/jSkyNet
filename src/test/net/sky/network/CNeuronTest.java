@@ -107,6 +107,15 @@ public class CNeuronTest {
 	}
 
 	@Test
+	public void unsetThreshold(){
+		neuron.setThreshold(0.5f);
+		
+		neuron.unsetThreshold();
+		
+		assertTrue(0.0f == neuron.getThreshold());
+	}
+	
+	@Test
 	public void calculate() {
 		neuron.calculate(0.1f);
 		assertTrue(0.1f == neuron.getValue());

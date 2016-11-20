@@ -32,12 +32,31 @@ public class CNetworkTest {
 		network.addLayer(hiddenLayer);
 		network.addLayer(outputLayer);
 
-		List<CLayer> layers = network.getLayers();
+		assertSame(inputLayer, network.getLayer(0));
+		assertSame(hiddenLayer, network.getLayer(1));
+		assertSame(outputLayer, network.getLayer(2));
+	}
 
-		assertEquals(3, layers.size());
-		assertSame(inputLayer, layers.get(0));
-		assertSame(hiddenLayer, layers.get(1));
-		assertSame(outputLayer, layers.get(2));
+	@Test
+	public void inputLayer() {
+		CLayer inputLayer = Mockito.mock(CLayer.class);
+
+		assertSame(null, network.getInputLayer());
+
+		network.setInputLayer(inputLayer);
+
+		assertSame(inputLayer, network.getInputLayer());
+	}
+
+	@Test
+	public void outputLayer() {
+		CLayer outputLayer = Mockito.mock(CLayer.class);
+
+		assertSame(null, network.getOutputLayer());
+
+		network.setOutputLayer(outputLayer);
+
+		assertSame(outputLayer, network.getOutputLayer());
 	}
 
 	@Test
