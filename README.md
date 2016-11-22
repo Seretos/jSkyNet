@@ -104,4 +104,5 @@ TODO:
 -----
 
 - save networks to file
+- network builder
 - evolutionary algorithm
