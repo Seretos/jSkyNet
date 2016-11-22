@@ -6,10 +6,19 @@ a little java neuronal network test
 Build
 -----
 
-you require maven to build the package
+you require maven and ant to build the package
 
 ```php
-mvn package
+ant build
+```
+
+Install
+-------
+
+if you want to edit this package in eclipse run the following command to install the required jar-files for eclipse.
+
+```php
+ant install
 ```
 
 Usage

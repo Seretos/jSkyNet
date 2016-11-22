@@ -1,0 +1,13 @@
+<project name="jSkyNet" default="install" basedir=".">
+	<target name="install">
+		<mkdir dir="lib" />
+		<get src="http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar" dest="lib/junit-4.12.jar" />
+		<get src="http://central.maven.org/maven2/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar" dest="lib/mockito-all-1.10.19.jar" />
+	</target>
+
+	<target name="build">
+		<exec executable="mvn">
+			<arg value="package" />
+		</exec>
+	</target>
+</project>
