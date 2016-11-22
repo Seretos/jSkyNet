@@ -2,13 +2,10 @@ package net.sky.network.type;
 
 import java.util.List;
 
-import net.sky.network.CLayer;
 import net.sky.network.CNetwork;
 import net.sky.network.CSynapse;
 import net.sky.network.CTrainingSet;
 import net.sky.network.INeuron;
-import net.sky.network.type.backpropagation.CDeltaNeuron;
-import net.sky.network.type.backpropagation.CDeltaNeuronBag;
 
 public class CBackpropagationNetwork extends CNetwork {
 	private float learn;
@@ -19,6 +16,11 @@ public class CBackpropagationNetwork extends CNetwork {
 		tolerance = t;
 	}
 
+	/**
+	 * train the network with the argumented training sets
+	 * @param sets
+	 * @param steps
+	 */
 	public void train(List<CTrainingSet> sets, int steps) {
 		for (CTrainingSet set : sets) {
 			setInputs(set);

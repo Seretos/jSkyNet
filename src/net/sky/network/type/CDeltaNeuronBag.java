@@ -1,11 +1,11 @@
-package net.sky.network.type.backpropagation;
+package net.sky.network.type;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import net.sky.network.INeuron;
 
-public class CDeltaNeuronBag {
+class CDeltaNeuronBag {
 	private List<CDeltaNeuron> neurons;
 
 	public CDeltaNeuronBag() {

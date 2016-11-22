@@ -6,7 +6,15 @@
 	</target>
 
 	<target name="build">
-		<exec executable="mvn">
+		<exec executable="javadoc">
+			<arg value="-d" />
+			<arg value="${basedir}/target/javadoc" />
+			<arg value="-sourcepath" />
+			<arg value="${basedir}/src" />
+			<arg value="-subpackages" />
+			<arg value="net.sky" />
+		</exec>
+		<exec executable="mvn.cmd">
 			<arg value="package" />
 		</exec>
 	</target>

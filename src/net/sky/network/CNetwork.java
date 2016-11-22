@@ -3,6 +3,9 @@ package net.sky.network;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * represents a network without any learning rules
+ */
 public class CNetwork implements INetwork {
 	protected List<CLayer> layers;
 	protected List<CSynapse> synapses;
@@ -79,5 +82,12 @@ public class CNetwork implements INetwork {
 		for (int i = 0; i < steps; i++) {
 			execute();
 		}
+	}
+	
+	public void importNetwork(INetwork net){
+		layers = net.getLayers();
+		inputLayer = net.getInputLayer();
+		outputLayer = net.getOutputLayer();
+		synapses = net.getSynapses();
 	}
 }

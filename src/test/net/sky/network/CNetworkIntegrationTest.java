@@ -5,10 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import net.sky.network.CLayer;
+import net.sky.network.CNetwork;
 import net.sky.network.CNeuron;
 import net.sky.network.CSynapse;
 import net.sky.network.INeuron;
 import net.sky.network.neuron.CBinaryNeuron;
+import net.sky.network.type.CHebbNetwork;
 
 public class CNetworkIntegrationTest {
 
@@ -343,5 +345,36 @@ public class CNetworkIntegrationTest {
 		assertTrue(0.0f == hidden1.getValue());
 		assertTrue(0.0f == hidden2.getValue());
 		assertTrue(1.5f == output.getValue());
+	}
+	
+	@Test
+	public void convertNetwork(){
+		CHebbNetwork net = new CHebbNetwork(0.1f);
+		INeuron input = new CNeuron();
+		INeuron output = new CNeuron();
+		CSynapse syn = new CSynapse(input,output,1.0f);
+		CLayer inputLayer = new CLayer();
+		CLayer outputLayer = new CLayer();
+		CNetwork convertNet = new CNetwork();
+		
+		inputLayer.addNeuron(input);
+		outputLayer.addNeuron(output);
+		
+		net.addSynapse(syn);
+		net.addLayer(inputLayer);
+		net.addLayer(outputLayer);
+		
+		input.calculate(1.0f);
+		
+		net.execute();
+		
+		assertTrue(1.1f == syn.getWeight());
+		
+		convertNet.importNetwork(net);
+		
+		input.calculate(1.0f);
+		convertNet.execute();
+		
+		assertTrue(1.1f == syn.getWeight());
 	}
 }

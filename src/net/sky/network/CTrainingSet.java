@@ -3,6 +3,9 @@ package net.sky.network;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * hold the input and output values for one training entry
+ */
 public class CTrainingSet {
 	private List<Float> inputs;
 	private List<Float> outputs;

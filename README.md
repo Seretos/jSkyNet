@@ -103,6 +103,5 @@ network.train(sets,2);
 TODO:
 -----
 
-- convert networks
 - save networks to file
 - evolutionary algorithm

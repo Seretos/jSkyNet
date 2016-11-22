@@ -1,8 +1,8 @@
-package net.sky.network.type.backpropagation;
+package net.sky.network.type;
 
 import net.sky.network.INeuron;
 
-public class CDeltaNeuron {
+class CDeltaNeuron {
 	private INeuron neuron;
 	private float delta;
 
