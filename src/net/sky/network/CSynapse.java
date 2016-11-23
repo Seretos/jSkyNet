@@ -14,7 +14,7 @@ public class CSynapse {
 	 * create a synapse between to neurons
 	 * @param source
 	 * @param target
-	 * @param weight
+	 * @param w
 	 */
 	public CSynapse(INeuron source, INeuron target, float w) {
 		sourceNeuron = source;
