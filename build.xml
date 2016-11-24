@@ -3,6 +3,7 @@
 		<mkdir dir="lib" />
 		<get src="http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar" dest="lib/junit-4.12.jar" />
 		<get src="http://central.maven.org/maven2/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar" dest="lib/mockito-all-1.10.19.jar" />
+		<get src="http://central.maven.org/maven2/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar" dest="lib/json-simple-1.1.1.jar"/>
 	</target>
 
 	<target name="build">

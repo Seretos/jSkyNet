@@ -100,9 +100,26 @@ sets.add(t3);
 network.train(sets,2);
 ```
 
+save network to file
+
+```java
+CJSONConverter converter = new CJSONConverter(new CJSONDefaultNeuronConverter());
+converter.addNeuronConverter(new CJSONBinaryNeuronConverter());
+converter.addNeuronConverter(new CJSONUnsignedLinearNeuronConverter());
+converter.addNeuronConverter(new CJSONLinearNeuronConverter());
+converter.addNeuronConverter(new CJSONLogisticNeuronConverter());
+converter.addNeuronConverter(new CJSONNormalizeNeuronConverter());
+converter.addNeuronConverter(new CJSONTangentNeuronConverter());
+
+JSONObject obj = converter.convertNetwork(network);
+
+try (FileWriter file = new FileWriter("/path/to/file.ext")) {
+	file.write(obj.toJSONString());
+}
+```
+
 TODO:
 -----
 
-- save networks to file
 - network builder
 - evolutionary algorithm

@@ -22,4 +22,12 @@ public class CLinearNeuron extends CBaseNeuron {
 	public void setIntersection(float i) {
 		intersection = i;
 	}
+	
+	public float getGradient(){
+		return gradient;
+	}
+	
+	public float getIntersection(){
+		return intersection;
+	}
 }
